@@ -1,40 +1,23 @@
 FROM ubuntu:16.04
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-		apache2 \
-		software-properties-common \
-        git \
-        gcc \
-        curl \
-        mysql-client \
-	&& apt-get clean \
-	&& rm -fr /var/lib/apt/lists/*
-
-RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
-
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends \
-        libapache2-mod-php5.6 \
-        php5.6 \
-        php5.6-cli \
-        php5.6-curl \
-        php5.6-dev \
-        php5.6-gd \
-        php5.6-imap \
-        php5.6-mbstring \
-        php5.6-mcrypt \
-        php5.6-mysql \
-        php5.6-pgsql \
-        php5.6-pspell \
-        php5.6-xml \
-        php5.6-xmlrpc \
-        php-apcu \
-        php-memcached \
-        php-pear \
-        php-redis \
-    && apt-get clean \
-    && rm -fr /var/lib/apt/lists/*
-
+	apache2 \
+	php7.0 \
+	libapache2-mod-php7.0 \
+	php7.0-cli \
+	php7.0-common \
+	php7.0-mbstring \
+	php7.0-gd \
+	php7.0-intl \
+	php7.0-xml \
+	php7.0-mysql \
+	php7.0-mcrypt \
+	php7.0-zip \
+	git \
+	gcc \
+	curl \
+    && rm -r /var/lib/apt/lists/*
 
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
